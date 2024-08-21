@@ -1,38 +1,31 @@
 <template>
   <nav class="subNavigation">
+    
     <ul id="subNav">
-      <li
+      <li class="meno">Lubo</li>    
+      <li class="bar"
+      
         v-for="header in headers"
         :key="header.id"
-        :class="{ active: header.id === currentSection }"
-      >
-        <a :href="'#' + header.id">{{ header.name }}</a>
+        :class="{ active: header.id === currentSection }">
+        <a href="#" @click.prevent="scrollTo(header.id)">{{ header.name }}</a>
       </li>
     </ul>
   </nav>
   <div class="content">
     <toggle-background></toggle-background>
-
-
     <section id="home">
-      
-      <img  alt="Vue logo" src="./assets/pifko.jpg">
+      <img alt="Vue logo" src="./assets/pifko.jpg">
       <meNameVue></meNameVue>
-      
-      <icon-link></icon-link>            
+      <icon-link></icon-link>
     </section>
-
     <section id="about">
       <aboutVueVue></aboutVueVue>
     </section>
     <section id="contact">
       <email></email>
-      
     </section>
   </div>
-
-
-
 </template>
 
 <script>
@@ -42,16 +35,16 @@ import email from './components/email.vue';
 import iconLink from './components/icon-link.vue';
 import meNameVue from './components/meName.vue';
 import aboutVueVue from './components/aboutVue.vue';
+
 export default {
-  components: {  ToggleBackground ,email,iconLink,meNameVue,aboutVueVue},
-  ToggleBackground,
+  components: { ToggleBackground, email, iconLink, meNameVue, aboutVueVue },
   name: 'ContactUs',
   setup() {
-    
     const currentSection = ref();
     const section = ref();
     
     const headers = [
+      
       { id: 'home', name: 'Home' },
       { id: 'about', name: 'About' },
       { id: 'contact', name: 'Contact' }
@@ -59,7 +52,6 @@ export default {
     
     onMounted(() => {
       section.value = document.querySelectorAll('section');
-      
       window.addEventListener('scroll', updateScroll);
       updateScroll();
     });
@@ -76,13 +68,24 @@ export default {
         }
       });
     }
+
+    function scrollTo(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    }
     
-    return { currentSection, headers };
+    return { currentSection, headers, scrollTo };
   }
 }
 </script>
 
 <style>
+
 
 
 
@@ -102,7 +105,7 @@ img {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-behaviour: smooth;
+  scroll-behavior: smooth;
   tect-decoration: none;
   font-family: Verdana;
 }
@@ -126,6 +129,20 @@ ul {
 li {
   display: table-cell;
 }
+
+
+.meno {
+  font-weight: bold;
+  line-height: 1rem;
+  padding: 18px 0 5px 0;
+  margin: 0 25px;
+  color: white;
+  letter-spacing: 0.125rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  font-weight: 00;
+  text-transform: uppercase;
+}
 li > a {
   font-weight: bold;
   line-height: 1rem;
@@ -141,13 +158,16 @@ li > a {
 }
 li > a:hover {
   border-bottom: 2px solid blue;
+  
 }
 .active > a {
   color: rgba(235, 235, 235, 0.6);
   border-bottom: 2px solid blue;
+  
 }
 .content {
   margin-top: 40px;
+  
 }
 section {
   
@@ -159,12 +179,7 @@ section {
   font-weight: bolder;
   padding-bottom: 70px;
   text-transform: uppercase;
+  
 }
-
-
-
-
-
-
 
 </style>

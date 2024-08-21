@@ -84,7 +84,7 @@ import emailjs from '@emailjs/browser';
  
 }
 .form-item{
-  margin-bottom: 15px; /* Medzera medzi položkami */
+  margin-bottom: 40px; /* Medzera medzi položkami */
   /*border: 2px solid red;*/ /* nastaví rámček so šírkou 2 pixely a farbou žltou */
   /*padding: 5px; *//* pridá vnútorný okraj okolo textu v rámci rámčeka */
 

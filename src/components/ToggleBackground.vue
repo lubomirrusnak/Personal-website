@@ -8,9 +8,11 @@
   
       <div :style="{ backgroundColor: isDark  }">
 
-        <p></p>
+
       </div>
     </div>
+
+    
   </template>
   
   <script>

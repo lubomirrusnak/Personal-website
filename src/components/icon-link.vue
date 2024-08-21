@@ -71,7 +71,7 @@ padding: 10px; /* Optional: Adds some space around the icons */
   margin-left: -50%;
   position: relative;
   border-color: red;
-  padding: 10px; /* Optional: Adds some space around the icons */
+  padding: 15px; /* Optional: Adds some space around the icons */
 
 }
 
